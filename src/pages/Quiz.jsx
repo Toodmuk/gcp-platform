@@ -6,18 +6,23 @@ export default function Quiz() {
   const [params] = useSearchParams()
   const startAt = Math.min(Number(params.get('q') || 0), QUESTIONS.length - 1)
   const [step, setStep] = useState(params.get('q') ? startAt : -1)
-  const [scores, setScores] = useState({})
+  const [answers, setAnswers] = useState([])
   const navigate = useNavigate()
 
   const pick = (weights) => {
-    const next = { ...scores }
-    for (const [k, v] of Object.entries(weights)) next[k] = (next[k] || 0) + v
+    const next = [...answers]
+    next[step] = weights
     if (step + 1 < QUESTIONS.length) {
-      setScores(next)
+      setAnswers(next)
       setStep(step + 1)
     } else {
+      const totals = {}
+      for (const w of next) {
+        if (!w) continue
+        for (const [k, v] of Object.entries(w)) totals[k] = (totals[k] || 0) + v
+      }
       const winner = Object.keys(CHARACTERS).reduce(
-        (best, k) => ((next[k] || 0) > (next[best] || 0) ? k : best),
+        (best, k) => ((totals[k] || 0) > (totals[best] || 0) ? k : best),
         'golden'
       )
       navigate('/quiz/result/' + winner)
@@ -33,7 +38,7 @@ export default function Quiz() {
     return (
       <div className="quiz-shell">
         <div className="quiz-intro">
-          <div className="quiz-emoji-row">☀️✨🦖🔥🍿🍯🌊</div>
+          <div className="quiz-emoji-row" aria-hidden="true">☀️✨🦖🔥🍿🍯🌊</div>
           <span className="chip chip-red">90-second personality quiz</span>
           <h1>
             What Type of <span className="nug">Nugget Traveler</span><br />are You?
@@ -61,6 +66,13 @@ export default function Quiz() {
   return (
     <div className="quiz-shell">
       <div className="quiz-progress">
+        <button
+          className="q-back"
+          onClick={() => setStep(step - 1)}
+          aria-label={step === 0 ? 'Back to quiz intro' : 'Previous question'}
+        >
+          ←
+        </button>
         <div className="bar"><i style={{ width: progress + '%' }} /></div>
         <span>{step + 1} / {QUESTIONS.length}</span>
       </div>

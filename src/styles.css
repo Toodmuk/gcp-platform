@@ -418,8 +418,154 @@ table.tr-table tr.total td { background: var(--sky-soft); font-weight: 800; bord
 .mt8 { margin-top: 8px; } .mt16 { margin-top: 16px; } .mt24 { margin-top: 24px; } .mt40 { margin-top: 40px; }
 .center { text-align: center; }
 
+/* ── Interaction & accessibility layer ── */
+a, button { -webkit-tap-highlight-color: transparent; }
+.btn, .q-opt, .nav-links a, .tabbar a, .tile, .region-card .join { touch-action: manipulation; }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 6px; }
+.btn:active { transform: translateY(0) scale(0.97); }
+.q-opt:active { transform: scale(0.985); background: var(--sky-soft); }
+.tile:active { transform: translateY(-1px) scale(0.99); }
+.q-back {
+  border: none; background: #fff; color: var(--muted); font-weight: 700; font-size: 17px;
+  width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid var(--line); flex-shrink: 0;
+}
+.q-back:active { background: var(--sky-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  .btn:hover, .tile:hover, .q-opt:hover { transform: none; }
+}
+
+/* ── Mobile bottom tab bar ── */
+.tabbar { display: none; }
+
+/* ── Tablet & below ── */
 @media (max-width: 960px) {
   .hero-grid, .result-grid, .comm-grid, .book { grid-template-columns: 1fr; }
-  .card-grid, .tile-grid { grid-template-columns: 1fr 1fr; }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .tile-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+}
+
+/* ── Phones ── */
+@media (max-width: 760px) {
+  .wrap { padding: 0 18px; }
+  .nav { padding: 10px 16px; }
+  .app { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+
+  .tabbar {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line); justify-content: space-around;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tabbar a {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    font-size: 10.5px; font-weight: 600; color: var(--muted);
+    min-width: 56px; min-height: 44px; padding: 4px 6px; border-radius: 10px; justify-content: center;
+  }
+  .tabbar a.active { color: var(--red); }
+  .tabbar a:active { background: var(--sky-soft); }
+
+  /* hero */
+  .hero { padding: 46px 0 54px; }
+  .hero-grid { gap: 36px; }
+  .hero h1 { font-size: 33px; }
+  .hero p.lead { font-size: 15.5px; }
+  .hero-ctas .btn { flex: 1 1 auto; justify-content: center; }
+  .hero-stats { gap: 18px 26px; flex-wrap: wrap; }
+  .pp-cover { width: min(300px, 80vw); transform: rotate(0deg); }
+
+  .section { padding: 44px 0 4px; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .section-head h2 { font-size: 23px; }
+  .footer { flex-direction: column; gap: 8px; padding: 22px 18px; margin-top: 48px; }
+
+  /* quiz */
+  .quiz-shell { padding: 26px 16px; }
+  .quiz-intro { padding: 34px 20px; }
+  .quiz-intro h1 { font-size: 27px; }
+  .quiz-emoji-row { font-size: 24px; letter-spacing: 6px; }
+  .quiz-intro .sub { font-size: 14.5px; }
+  .quiz-meta { flex-wrap: wrap; gap: 10px 18px; }
+  .q-card { padding: 24px 18px; }
+  .q-card h2 { font-size: 20px; }
+  .q-opt { padding: 15px 14px; font-size: 14px; }
+
+  /* result */
+  .result-shell { padding: 24px 16px; }
+  .result-grid { gap: 26px; }
+  .ig-card { max-width: 340px; margin: 0 auto; }
+  .result-actions { justify-content: center; }
+  .result-actions .btn { flex: 1 1 auto; justify-content: center; }
+  .result-side h1 { font-size: 24px; }
+  .gate { padding: 22px 18px; }
+  .gate form { grid-template-columns: 1fr; }
+
+  /* passport */
+  .pass-shell { padding: 26px 14px; }
+  .pass-head { flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+  .pass-head h1 { font-size: 25px; }
+  .book .page { padding: 22px 16px; min-height: 0; }
+  .book .page.left { border-right: none; border-bottom: 1.5px dashed #cfc7b2; }
+  .idpage { grid-template-columns: 86px 1fr; gap: 12px; }
+  .idphoto { width: 86px; height: 106px; font-size: 34px; }
+  .idfields { gap: 8px 12px; }
+  .idfields .f span { font-size: 12px; word-break: break-word; }
+  .efset-band { flex-wrap: wrap; gap: 10px 14px; padding: 14px; }
+  .efset-band .score { font-size: 34px; }
+  .efset-band .cefr { font-size: 18px; padding: 6px 10px; }
+  .gci-panel { grid-template-columns: 1fr; justify-items: center; gap: 14px; }
+  .gci-panel .skill-bars { width: 100%; }
+  .mrz-strip { position: static; margin-top: 18px; font-size: 9.5px; }
+  .stamp-grid { gap: 10px; }
+  .stamp { padding: 10px 11px; }
+  .pass-actions { flex-wrap: wrap; }
+  .pass-actions .btn { flex: 1 1 45%; justify-content: center; padding: 12px 10px; font-size: 13px; }
+
+  /* verify */
+  .verify-shell { padding: 24px 14px; }
+  .verify-banner { padding: 18px; flex-wrap: wrap; gap: 12px; }
+  .verify-banner h1 { font-size: 21px; }
+  .verify-banner .vtime { margin-left: 0; text-align: left; width: 100%; }
+  .verify-card { padding: 20px 16px; }
+  .verify-id { grid-template-columns: 76px 1fr; gap: 14px; }
+  .verify-id h2 { font-size: 20px; }
+  .verify-id .vid { font-size: 11.5px; word-break: break-all; }
+  .verify-id .vscore { grid-column: 1 / -1; }
+  .checks { grid-template-columns: 1fr; }
+  .vs-row { flex-wrap: wrap; gap: 4px 10px; }
+  .vs-row .vs-date { margin-left: auto; }
+  .verify-foot { flex-direction: column; align-items: stretch; }
+  .verify-foot > div:last-child { display: flex; flex-direction: column; gap: 10px; }
+  .verify-foot .btn { justify-content: center; }
+
+  /* transcript */
+  .tr-shell { padding: 24px 12px; }
+  .tr-doc { padding: 26px 18px; }
+  .tr-head { flex-wrap: wrap; gap: 8px; }
+  .tr-head h1 { font-size: 20px; }
+  .tr-meta { grid-template-columns: 1fr 1fr; }
+  table.tr-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.tr-table th { padding: 8px 9px; font-size: 11px; }
+  table.tr-table td { padding: 9px; font-size: 12px; }
+  .tr-sign { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .tr-sign .sig { flex: 1 1 40%; }
+  .tr-foot { flex-wrap: wrap; gap: 6px; }
+
+  /* community */
+  .comm-hero { padding: 30px 0 28px; }
+  .comm-hero h1 { font-size: 25px; }
+  .signed-chip { font-size: 10.5px; white-space: normal; word-break: break-all; }
+  .comm-grid { padding: 26px 18px; gap: 22px; }
+  .feed-post .fp-head { flex-wrap: wrap; gap: 4px; }
+}
+
+/* ── Small phones ── */
+@media (max-width: 520px) {
+  .card-grid, .region-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 29px; }
+  .profile-grid { gap: 10px; }
+  .tr-meta { grid-template-columns: 1fr; }
+  .nav-brand strong { font-size: 14px; }
 }
