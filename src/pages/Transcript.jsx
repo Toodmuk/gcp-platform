@@ -36,8 +36,8 @@ export default function Transcript() {
           <thead>
             <tr>
               <th>Skill</th>
-              <th>Pre-departure</th>
-              <th>Post-APPLY</th>
+              <th>GCI-0 · pre</th>
+              <th>GCI-2 · post</th>
               <th>Δ Delta</th>
               <th>Level descriptor (post)</th>
             </tr>
@@ -64,7 +64,9 @@ export default function Transcript() {
 
         <div style={{ fontSize: 11.5, color: 'var(--muted)' }}>
           Scoring: 40% structured observation (EF staff rubric) · 30% portfolio evidence in the
-          Passport · 30% self + peer assessment. Levels L1 Novice → L4 Global-ready.
+          Passport · 30% self + peer assessment. Levels L1 Novice → L4 Global-ready (each skill
+          0–100, banded 0–25 / 26–50 / 51–75 / 76–100). Measured at GCI-0 (SPARK baseline: EF SET +
+          situational-judgment quiz + video task, AI-assisted) and GCI-2 (post-APPLY, calibrated examiner).
         </div>
 
         <div className="tr-evidence">

@@ -90,7 +90,7 @@ export default function Passport() {
                 </div>
               ))}
               <div style={{ fontSize: 12, color: 'var(--muted)' }}>
-                Pre-departure {h.gci.pre} → post-APPLY {h.gci.post} · <b style={{ color: 'var(--ok)' }}>Δ +{h.gci.delta}</b> — the delta is the product.
+                <b style={{ color: 'var(--navy)' }}>GCI-0</b> baseline {h.gci.pre} → <b style={{ color: 'var(--navy)' }}>GCI-2</b> post-APPLY {h.gci.post} · <b style={{ color: 'var(--ok)' }}>Δ +{h.gci.delta}</b> — the delta is the product.
               </div>
             </div>
           </div>

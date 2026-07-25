@@ -30,7 +30,7 @@ export default function Verify() {
           </div>
           <div className="vscore">
             <b>{h.gci.post}</b>
-            <span>GCI · {h.gci.level}<br />Δ +{h.gci.delta} pre → post</span>
+            <span>GCI · {h.gci.level}<br />Δ +{h.gci.delta} · GCI-0 → GCI-2</span>
           </div>
         </div>
 
