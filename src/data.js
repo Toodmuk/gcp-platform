@@ -220,12 +220,56 @@ export const QUESTIONS = [
 
 // ── Community data ──────────────────────────────────────────────────────────
 
-export const TH_REGIONS = [
-  { name: 'Bangkok & Central', members: 2148, next: 'Bangkok Summit 2026 · 10 OCT', icon: '🏙', hot: true },
-  { name: 'North · Chiang Mai', members: 312, next: 'Café English Walk · 2 AUG', icon: '⛰' },
-  { name: 'Northeast · Khon Kaen', members: 256, next: 'Mentor AMA Night · 9 AUG', icon: '🌾' },
-  { name: 'South · Hat Yai & Phuket', members: 198, next: 'Beach Cleanup × AIESEC · 16 AUG', icon: '🏝' },
-]
+export const REGIONS = {
+  north: {
+    name: 'North', hub: 'Chiang Mai', emoji: '⛰', members: 312, color: '#3E8E5A',
+    communities: [
+      { icon: '🚶', name: 'Café English Walk CNX', members: 84, next: 'Nimman loop · SAT 2 AUG', tag: 'weekly' },
+      { icon: '🥾', name: 'Doi Hike & Talk', members: 61, next: 'Doi Suthep sunrise · 10 AUG', tag: 'outdoor' },
+      { icon: '💻', name: 'Nomad × Alumni Mixer', members: 122, next: 'Yellow Coworking · 21 AUG', tag: 'career' },
+    ],
+  },
+  northeast: {
+    name: 'Northeast (Isan)', hub: 'Khon Kaen', emoji: '🌾', members: 256, color: '#B8860B',
+    communities: [
+      { icon: '🎤', name: 'Mentor AMA Night KKC', members: 97, next: 'KKU campus · SAT 9 AUG', tag: 'mentors' },
+      { icon: '🍜', name: 'Isan Food × Language Swap', members: 74, next: 'Ton Tann market · 17 AUG', tag: 'culture' },
+      { icon: '🎶', name: 'Mor Lam & More', members: 38, next: 'open mic · 30 AUG', tag: 'social' },
+    ],
+  },
+  central: {
+    name: 'Central & Bangkok', hub: 'Bangkok', emoji: '🏙', members: 2148, color: '#17375E', flagship: true,
+    communities: [
+      { icon: '🏃', name: 'EF Run Club Bangkok', members: 214, next: 'Benjakitti 5k · SUN 3 AUG', tag: 'weekly' },
+      { icon: '☕', name: 'Café English Club Ari', members: 186, next: 'conversation tables · 6 AUG', tag: 'weekly' },
+      { icon: '🎲', name: 'Board & Banter', members: 92, next: 'games night in English · 14 AUG', tag: 'social' },
+      { icon: '🏛', name: 'Bangkok Summit 2026 crew', members: 340, next: 'volunteer briefing · 20 SEP', tag: 'summit' },
+    ],
+  },
+  east: {
+    name: 'East', hub: 'Chonburi · Rayong', emoji: '🌊', members: 174, color: '#2C6BB3',
+    communities: [
+      { icon: '🏃', name: 'EF Run Club East', members: 78, next: 'Bang Saen beach 5k · SAT 2 AUG', tag: 'weekly' },
+      { icon: '🏄', name: 'Surf & Speak Rayong', members: 45, next: 'Mae Ramphueng · 16 AUG', tag: 'outdoor' },
+      { icon: '🧹', name: 'Beach Cleanup × AIESEC', members: 66, next: 'Koh Larn · 23 AUG', tag: 'volunteer' },
+    ],
+  },
+  west: {
+    name: 'West', hub: 'Kanchanaburi', emoji: '🏞', members: 88, color: '#8E6BB8',
+    communities: [
+      { icon: '🛶', name: 'River Trek English', members: 41, next: 'Kwai kayak + campfire · 9 AUG', tag: 'outdoor' },
+      { icon: '🏡', name: 'Homestay Exchange Weekend', members: 29, next: 'host a traveler · SEP', tag: 'culture' },
+    ],
+  },
+  south: {
+    name: 'South', hub: 'Hat Yai · Phuket', emoji: '🏝', members: 198, color: '#D64541',
+    communities: [
+      { icon: '📚', name: 'Hat Yai Study Club', members: 88, next: 'IELTS vs EF SET clinic · 8 AUG', tag: 'study' },
+      { icon: '🏖', name: 'Phuket Beach English', members: 72, next: 'sunset session · 15 AUG', tag: 'weekly' },
+      { icon: '🧗', name: 'Krabi Climb & Converse', members: 38, next: 'Railay beginners day · 29 AUG', tag: 'outdoor' },
+    ],
+  },
+}
 
 export const GLOBAL_CHAPTERS = [
   { name: 'London', flag: '🇬🇧', members: 8420 },
